@@ -40,6 +40,60 @@ public class Search {
         return false;
     }
     
+    /**
+     * 获取两个有序序列中存在的相同元素
+     * @param a
+     * @param b
+     */
+    public static void getCommonSequenceOf2Array(Integer[] a, Integer[] b) {
+        int one = 0;
+        int two = 0;
+        int k = 0;
+        Integer[] copy = new Integer[a.length > b.length ? a.length : b.length];
+        while (one < a.length && two < b.length) {
+            if (a[one] < b[two]) {
+                one ++;
+            } else if (a[one] == b[two]) {
+                copy[k ++] = a[one];
+                one ++;
+                two ++;
+            } else {
+                two ++;
+            }
+        }
+    }
+    
+    /**
+     * 获取数组中所有元素组合的最大元素(未考虑负数)
+     * @param a
+     */
+    public static void getMaxDigitInArray(Integer[] a) {
+        for (int i = 0;i < a.length - 1; i ++) {
+            for (int j = 0;j < a.length - 1 - i;j ++) {
+                if (compare(a[j], a[j ++])) {
+                    int temp = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+    }
+    
+    /**
+     * 比较两个整数平起来的数字,逆序大还是正序大
+     * @param a
+     * @param b
+     * @return
+     */
+    public static boolean compare(int a, int b) {
+        String s1 = a + "" + b;
+        String s2 = b + "" + a;
+        if (s1.compareTo(s2) < 0) {
+            return true;
+        }
+        return false;
+    }
+    
     public static void main(String[] args) {
         System.out.println(binarySearch(new Integer[]{1, 2, 3, 4, 5, 6, 6, 7, 10}, 11));
     }

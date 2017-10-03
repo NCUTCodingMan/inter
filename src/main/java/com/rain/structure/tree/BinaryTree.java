@@ -37,7 +37,7 @@ public class BinaryTree {
                 if (node.left == null) {
                     node.left = new Node(data);
                 } else {
-                    createBinaryTree(node.right, data);
+                    createBinaryTree(node.left, data);
                 }
             }
         }
